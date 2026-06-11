@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  line-finder:
+    build: .
+    container_name: line-finder
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    volumes:
+      # Excel 輸出目錄，掛載到 NAS 讓檔案持久保存
+      - /volume1/docker/line-finder/exports:/tmp/line_finder_exports
+    environment:
+      - TZ=Asia/Taipei
+    # camoufox 需要 /dev/shm 空間（共享記憶體）
+    shm_size: "512mb"

@@ -1,0 +1,6 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+scrapling[all]
+openpyxl==3.1.5
+requests==2.32.3
+python-multipart==0.0.9
