@@ -6,9 +6,14 @@ from datetime import datetime
 from pathlib import Path
 
 COUNTY_COLORS = {
+    "基隆市": "E0F7FA", "台北市": "FFEBEE", "新北市": "E8EAF6",
+    "桃園市": "F1F8E9", "新竹市": "FFF8E1", "新竹縣": "FFFDE7",
     "苗栗縣": "F0F4C3", "台中市": "FEF9E7", "彰化縣": "E8F5E9",
     "南投縣": "FBE9E7", "雲林縣": "E3F2FD", "嘉義縣": "FCE4EC",
-    "嘉義市": "F3E5F5", "台南市": "FFF3E0",
+    "嘉義市": "F3E5F5", "台南市": "FFF3E0", "高雄市": "FFE0B2",
+    "屏東縣": "FFCCBC", "宜蘭縣": "C8E6C9", "花蓮縣": "B2DFDB",
+    "台東縣": "D1C4E9", "澎湖縣": "B3E5FC", "金門縣": "F8BBD0",
+    "連江縣": "CFD8DC",
 }
 
 def build_excel(results: list[dict], industry: str, job_id: str) -> str:

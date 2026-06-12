@@ -32,6 +32,12 @@
   td { padding: 7px 12px; font-size: 13px; border-bottom: 1px solid #334155; color: #cbd5e1; }
   tr:hover td { background: #1e3a5f22; }
   .tag { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+  .county-基隆市 { background:#e0f7fa; color:#006064; }
+  .county-台北市 { background:#ffebee; color:#b71c1c; }
+  .county-新北市 { background:#e8eaf6; color:#1a237e; }
+  .county-桃園市 { background:#f1f8e9; color:#33691e; }
+  .county-新竹市 { background:#fff8e1; color:#ff6f00; }
+  .county-新竹縣 { background:#fffde7; color:#f57f17; }
   .county-苗栗縣 { background:#f0f4c3; color:#5d4037; }
   .county-台中市 { background:#fef9e7; color:#7b4f00; }
   .county-彰化縣 { background:#e8f5e9; color:#2e7d32; }
@@ -40,6 +46,14 @@
   .county-嘉義縣 { background:#fce4ec; color:#880e4f; }
   .county-嘉義市 { background:#f3e5f5; color:#4a148c; }
   .county-台南市 { background:#fff3e0; color:#e65100; }
+  .county-高雄市 { background:#ffe0b2; color:#e65100; }
+  .county-屏東縣 { background:#ffccbc; color:#bf360c; }
+  .county-宜蘭縣 { background:#c8e6c9; color:#1b5e20; }
+  .county-花蓮縣 { background:#b2dfdb; color:#004d40; }
+  .county-台東縣 { background:#d1c4e9; color:#4527a0; }
+  .county-澎湖縣 { background:#b3e5fc; color:#01579b; }
+  .county-金門縣 { background:#f8bbd0; color:#880e4f; }
+  .county-連江縣 { background:#cfd8dc; color:#263238; }
   input[type=text], textarea {
     background:#0f172a; border:1px solid #475569; border-radius:6px;
     color:#e2e8f0; padding:8px 10px; width:100%; font-size:13px;
@@ -75,8 +89,18 @@
     </div>
 
     <div class="mb-4">
-      <label>目標縣市</label>
-      <div class="flex flex-col gap-2 mt-1">
+      <div class="flex justify-between items-center">
+        <label style="margin-bottom:0">目標縣市</label>
+        <button type="button" id="toggle-all" onclick="toggleAllCounties()"
+                style="background:none;border:none;color:#06C755;font-size:12px;cursor:pointer">全選</button>
+      </div>
+      <div class="grid grid-cols-2 gap-x-2 gap-y-2 mt-2">
+        <label class="checkbox-item"><input type="checkbox" value="基隆市"> 基隆市</label>
+        <label class="checkbox-item"><input type="checkbox" value="台北市"> 台北市</label>
+        <label class="checkbox-item"><input type="checkbox" value="新北市"> 新北市</label>
+        <label class="checkbox-item"><input type="checkbox" value="桃園市"> 桃園市</label>
+        <label class="checkbox-item"><input type="checkbox" value="新竹市"> 新竹市</label>
+        <label class="checkbox-item"><input type="checkbox" value="新竹縣"> 新竹縣</label>
         <label class="checkbox-item"><input type="checkbox" value="苗栗縣"> 苗栗縣</label>
         <label class="checkbox-item"><input type="checkbox" value="台中市" checked> 台中市</label>
         <label class="checkbox-item"><input type="checkbox" value="彰化縣"> 彰化縣</label>
@@ -85,6 +109,14 @@
         <label class="checkbox-item"><input type="checkbox" value="嘉義縣"> 嘉義縣</label>
         <label class="checkbox-item"><input type="checkbox" value="嘉義市"> 嘉義市</label>
         <label class="checkbox-item"><input type="checkbox" value="台南市" checked> 台南市</label>
+        <label class="checkbox-item"><input type="checkbox" value="高雄市"> 高雄市</label>
+        <label class="checkbox-item"><input type="checkbox" value="屏東縣"> 屏東縣</label>
+        <label class="checkbox-item"><input type="checkbox" value="宜蘭縣"> 宜蘭縣</label>
+        <label class="checkbox-item"><input type="checkbox" value="花蓮縣"> 花蓮縣</label>
+        <label class="checkbox-item"><input type="checkbox" value="台東縣"> 台東縣</label>
+        <label class="checkbox-item"><input type="checkbox" value="澎湖縣"> 澎湖縣</label>
+        <label class="checkbox-item"><input type="checkbox" value="金門縣"> 金門縣</label>
+        <label class="checkbox-item"><input type="checkbox" value="連江縣"> 連江縣</label>
       </div>
     </div>
 
@@ -267,6 +299,13 @@ async function startSearch() {
 
 function downloadExcel() {
   if (downloadUrl) window.location.href = downloadUrl;
+}
+
+function toggleAllCounties() {
+  const boxes = [...document.querySelectorAll('.grid input[type=checkbox]')];
+  const allChecked = boxes.every(b => b.checked);
+  boxes.forEach(b => b.checked = !allChecked);
+  document.getElementById('toggle-all').textContent = allChecked ? '全選' : '清除';
 }
 </script>
 </body>
