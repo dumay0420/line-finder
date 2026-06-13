@@ -8,6 +8,8 @@ services:
     ports:
       - "8090:8090"
     volumes:
+      # 程式碼掛載：改檔後 restart 即生效，不必 rebuild image
+      - /volume1/docker/line-finder:/app
       # Excel 輸出目錄，掛載到 NAS 讓檔案持久保存
       - /volume1/docker/line-finder/exports:/tmp/line_finder_exports
     environment:
