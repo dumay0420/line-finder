@@ -3,6 +3,7 @@ version: "3.9"
 services:
   line-finder:
     build: .
+    image: line-finder:latest
     container_name: line-finder
     restart: unless-stopped
     ports:
